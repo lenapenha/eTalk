@@ -1,0 +1,39 @@
+/*******************************************************************************
+ *                         ProjetoAM - Grupo Buzz
+ *                         FIAP - SPACECUP - 2016
+ *
+ *     Este programa tem por objetivo servir como meio de avaliação para a
+ *  disciplina de Técnicas de Programação II dentro da competição SpaceCup
+ *  realizada no ano de 2016 como projeto multidisciplinar do terceiro ano do
+ *  curso de Engenharia da Computação, disciplina esta ministrada pelo Prof.
+ *  André David.
+ *
+ *     Com este programa é possível selecionar, ler e plotar um simples gráfico
+ *  o arquivo CSV que será gerado pelo altímetro montado pelos alunos e
+ *  utilizado durante o voo do foguete para capturar os dados de pressão
+ *  atmosférica, altitude e temperatura.
+ *
+ *
+ *     Integrantes do grupo
+ *          Cássio Manoel do Nascimento – RM 72114
+ *          Diego Andrade Barbosa – RM 71840
+ *          Fernanda Franco de Godoi – RM 69888
+ *          Marcos Roberto Dias Ferreira – RM 72297
+ *          Samira Rodrigues da Silva – RM 72011
+ *          Willian Nawate de Oliveira – RM 71560
+ *
+ *
+ *     Este programa é um software livre; você pode redistribuí-lo e/ou 
+ *  modificá-lo dentro dos termos da Licença Pública Geral GNU como 
+ *  publicada pela Fundação do Software Livre (FSF); na versão 3 da 
+ *  Licença, ou (na sua opinião) qualquer versão.
+ *
+ *     Este programa é distribuído na esperança de que possa ser útil, 
+ *  mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO
+ *  a qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a
+ *  Licença Pública Geral GNU para maiores detalhes.
+ *
+ *     Você deve ter recebido uma cópia da Licença Pública Geral GNU junto
+ *  com este programa. Se não, veja <http://www.gnu.org/licenses/>.
+ *
+*******************************************************************************/
