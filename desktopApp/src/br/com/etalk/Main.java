@@ -2,6 +2,17 @@ package br.com.etalk;
 
 import java.io.IOException;
 
+import java.security.GeneralSecurityException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
 import com.pi4j.io.serial.SerialDataEvent;
 import com.pi4j.io.serial.SerialDataEventListener;
 
@@ -70,13 +81,50 @@ public class Main extends Application {
 }
 
 class Browser extends Region {
- 
-    final WebView browser = new WebView();
+
+	final WebView browser = new WebView();
     final WebEngine webEngine = browser.getEngine();
      
     public Browser() {
         //apply the styles
         getStyleClass().add("browser");
+        
+        TrustManager[] trustAllCerts = new TrustManager[] {
+            new X509TrustManager() {
+       			@Override
+       			public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException { }
+       			@Override
+       			public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException { }
+       			@Override
+       			public X509Certificate[] getAcceptedIssuers() { return null; }
+            }
+        };
+
+       try { // Install the all-trusting trust manager
+           SSLContext sc = SSLContext.getInstance("SSL"); 
+           sc.init(null, trustAllCerts, new java.security.SecureRandom()); 
+           HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+        // Create all-trusting host name verifier
+           HostnameVerifier allHostsValid = new HostnameVerifier() {
+				@Override
+				public boolean verify(String arg0, SSLSession arg1) { return true; }
+           };
+           // Install the all-trusting host verifier
+           HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
+           /*
+            * end of the fix
+            */
+       } catch (GeneralSecurityException e) {
+       } 
+       // Now you can access an https URL without having the certificate in the truststore
+       /*        try { 
+           URL url = new URL("https://35.199.23.52:8443"); 
+           URLConnection con = url.openConnection();
+       } catch (MalformedURLException e) {
+       } catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} */
         // load the web page
         webEngine.load("https://35.199.23.52:8443");
         //add the web view to the scene
